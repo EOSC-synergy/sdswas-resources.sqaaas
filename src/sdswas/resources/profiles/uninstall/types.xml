@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<object meta_type="Plone Types Tool" name="portal_types">
+  <object meta_type="Dexterity FTI" name="dissemination" remove="True" />
+  <object meta_type="Dexterity FTI" name="document" remove="True" />
+  <object meta_type="Dexterity FTI" name="resource" remove="True" />
+</object>
+

@@ -1,0 +1,71 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      lang="en"
+      metal:use-macro="context/main_template/macros/master"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      i18n:domain="sdswas.resources">
+
+<body>
+<metal:main fill-slot="main">
+    <tal:main-macro metal:define-macro="main">
+      <div tal:replace="structure provider:plone.abovecontenttitle" />
+      <h1 class="bannerTitle"  tal:content="context/title" />
+      <div tal:replace="structure provider:plone.belowcontenttitle" />
+      <ul id="resources-menu" class="nav nav-pills nav-fill">
+        <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#publications">Publications</a></li>
+        <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#genericevents">Past Events</a></li>
+        <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#webinars">Webinars</a></li>
+        <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#technicalreports">Technical reports</a></li>
+        <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#disseminations">Dissemination</a></li>
+      </ul>
+
+      <div class="tab-content">
+        <div class="tab-pane active" id="publications" role="tabpanel" aria-labelledby="publications">
+          <div class="grid  grid-resources" tal:define="items python:view.publication_resources()">
+              <div class="griditem col-md-4" tal:repeat="item items"
+              tal:define="go_back_link_name string:GO BACK TO PUBLICATIONS;">
+                <metal:macro use-macro="context/resource_macros/macros/resource_with_preview" />
+              </div>
+          </div>
+        </div>
+        <div class="tab-pane" id="genericevents" role="tabpanel" aria-labelledby="genericevents">
+            <div class="grid grid-resources " tal:define="items python:view.generic_events()">
+              <div class="griditem col-md-4" tal:repeat="item items"
+              tal:define="go_back_link_name string:GO BACK TO PAST EVENTS;">
+                <metal:macro use-macro="context/resource_macros/macros/event_teaser" />
+              </div>
+            </div>
+        </div>
+        <div class="tab-pane" id="webinars" role="tabpanel" aria-labelledby="webinars">
+          <div class="grid grid-resources " tal:define="items python:view.webinar_resources()">
+            <div class="griditem col-md-4" tal:repeat="item items"
+            tal:define="go_back_link_name string:GO BACK TO WEBINARS;">
+              <metal:macro use-macro="context/resource_macros/macros/event_teaser" />
+            </div>
+          </div>
+        </div>
+        <div class="tab-pane" id="technicalreports" role="tabpanel" aria-labelledby="technicalreports">
+          <div class="grid grid-resources " tal:define="items python:view.techreport_resources()">
+              <div class="griditem col-md-4" tal:repeat="item items"
+               tal:define="go_back_link_name string:GO BACK TO TECHNICAL REPORTS;">
+                <metal:macro use-macro="context/resource_macros/macros/resource_with_preview" />
+            </div>
+          </div>
+        </div>
+        <div class="tab-pane" id="disseminations" role="tabpanel" aria-labelledby="disseminations">
+          <div class="grid grid-resources" tal:define="items python:view.dissemination_resources()">
+            <div class="griditem col-md-4" tal:repeat="item items"
+            tal:define="go_back_link_name string:GO BACK TO DISSEMINATIONS;">
+              <metal:macro use-macro="context/resource_macros/macros/resource_without_preview" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="full_view" class="modal fade" tabindex="-1" role="dialog">
+        <metal:macro use-macro="context/resources_modal/macros/modal"/>
+     </div>
+    </tal:main-macro>
+</metal:main>
+</body>
+</html>

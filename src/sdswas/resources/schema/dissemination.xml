@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model xmlns="http://namespaces.plone.org/supermodel/schema" xmlns:easyform="http://namespaces.plone.org/supermodel/easyform" xmlns:form="http://namespaces.plone.org/supermodel/form" xmlns:i18n="http://xml.zope.org/namespaces/i18n" xmlns:lingua="http://namespaces.plone.org/supermodel/lingua" xmlns:marshal="http://namespaces.plone.org/supermodel/marshal" xmlns:security="http://namespaces.plone.org/supermodel/security" xmlns:users="http://namespaces.plone.org/supermodel/users">
+   <schema>
+      <field name="full_description" type="plone.app.textfield.RichText">
+         <description>This is the text to be displayed in the full view of the content</description>
+         <title>Full description</title>
+      </field>
+      <field name="document" type="plone.namedfile.field.NamedBlobFile">
+         <description />
+         <required>False</required>
+         <title>Document</title>
+      </field>
+      <field name="image" type="plone.namedfile.field.NamedBlobImage">
+         <description />
+         <required>False</required>
+         <title>Image</title>
+      </field>
+      <field name="embedded_url" type="zope.schema.URI">
+         <description/>
+         <required>False</required>
+         <title>Embedded media URL</title>
+      </field>
+   </schema>
+</model>

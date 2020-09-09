@@ -1,0 +1,69 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:plone="http://namespaces.plone.org/plone"
+    i18n_domain="sdswas.resources">
+
+  <!-- Set overrides folder for Just-a-Bunch-Of-Templates product -->
+  <include package="z3c.jbot" file="meta.zcml" />
+  <browser:jbot
+      directory="overrides"
+      layer="sdswas.resources.interfaces.ISdswasResourcesLayer"
+      />
+
+  <!-- Publish static files -->
+  <plone:static
+      name="sdswas.resources"
+      type="plone"
+      directory="static"
+      />
+
+     <!--Browser views-->
+    <browser:page
+     name="disseminationview"
+     for="*"
+     layer="zope.interface.Interface"
+     class=".DisseminationView.DisseminationView"
+     template="templates/dissemination_view.pt"
+     permission="zope2.View"
+   />
+
+<browser:page
+   name="documentview"
+   for="*"
+   class=".DocumentView.DocumentView"
+   template="templates/document_view.pt"
+   permission="zope2.View"
+   layer="zope.interface.Interface"
+   />
+
+   <browser:page
+   name="resourceslist_view"
+   for="*"
+   class=".ResourceListView.ResourceListView"
+   template="templates/resourceslist_view.pt"
+   permission="zope2.View"
+   />
+
+  <browser:page
+    name="resource_macros"
+    for="*"
+    layer="zope.interface.Interface"
+    template="templates/resource_macros.pt"
+    permission="zope2.View"
+  />
+
+   <browser:page
+     name="resources_modal"
+     for="*"
+     layer="zope.interface.Interface"
+     class=".DocumentView.DocumentView"
+     template="templates/modal.pt"
+     permission="zope2.View"
+   />
+
+ <browser:resourceDirectory
+      name="sdswas.resources"
+      directory="static" />
+
+</configure>

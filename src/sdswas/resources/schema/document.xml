@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model xmlns:easyform="http://namespaces.plone.org/supermodel/easyform" xmlns:form="http://namespaces.plone.org/supermodel/form" xmlns:i18n="http://xml.zope.org/namespaces/i18n" xmlns:lingua="http://namespaces.plone.org/supermodel/lingua" xmlns:marshal="http://namespaces.plone.org/supermodel/marshal" xmlns:security="http://namespaces.plone.org/supermodel/security" xmlns:users="http://namespaces.plone.org/supermodel/users" xmlns="http://namespaces.plone.org/supermodel/schema">
+  <schema>
+    <field name="file" marshal:primary="true" type="plone.namedfile.field.NamedBlobFile">
+      <description/>
+      <title>File</title>
+    </field>
+    <field name="type" type="zope.schema.Choice">
+      <default>Publication</default>
+      <description/>
+      <title>Type</title>
+      <values>
+        <element>Publication</element>
+        <element>Technical report</element>
+        <element></element>
+      </values>
+    </field>
+  </schema>
+</model>

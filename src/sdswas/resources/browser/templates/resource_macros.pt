@@ -1,0 +1,117 @@
+ <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+ >
+
+<metal:row define-macro="pagetitle" i18n:domain="sdswas.resources">
+    <div tal:replace="structure provider:plone.abovecontenttitle" />
+    <h2 tal:content="context/title" />
+    <!--<h1 class="documentFirstHeading" tal:content="context/title" />-->
+    <!--<div tal:replace="structure provider:plone.belowcontenttitle" />
+    <p class="documentDescription" tal:content="context/description" />
+    -->
+</metal:row>
+
+<metal:row define-macro="filedownload" i18n:domain="sdswas.events">
+    <div class="download-document">
+        <h4 tal:content="title"></h4>
+        <div class="button-download-default">
+            <a href="${context/absolute_url}/@@download/document/${view/w/document/filename}">
+            <i class="fa fa-cloud-download-alt"></i>
+            <span>DOWNLOAD</span>
+            </a>
+        </div>
+    </div>
+</metal:row>
+
+<metal:row define-macro="title" i18n:domain="sdswas.resources">
+    <h3 class="truncate-overflow-3">
+      <a href="#" class="open_full_view" tal:content="title"
+        tal:attributes="data-url absolute_url;
+                        data-goback-link go_back_link_name;
+                        data-title title;
+                        data-target target;
+                        data-toggle string:modal;
+                        data-is-document is_document">
+    </a></h3>
+</metal:row>
+
+<metal:row define-macro="read_more_button"  i18n:domain="sdswas.events">
+  <div class="button button-dark">
+    <a href="#" class="open_full_view color-yellow"
+            tal:attributes="data-url absolute_url;
+                            data-goback-link go_back_link_name;
+                            data-title title;
+                            data-target target;
+                            data-toggle string:modal">READ MORE</a>
+  </div>
+</metal:row>
+
+<metal:row define-macro="preview_link">
+  <p> <a href="#" class="open_full_view color-yellow"
+            tal:attributes="data-url absolute_url;
+                            data-goback-link go_back_link_name;
+                            data-title title;
+                            data-target target;
+                            data-toggle string:modal;">PREVIEW</a></p>
+</metal:row>
+
+<metal:row define-macro="resource_with_preview" i18n:domain="sdswas.resources">
+  <div class="light-background "
+        tal:define="absolute_url python:item['absolute_url'];
+                      title python:item['title'];
+                      target string: #full_view;
+                      is_document string:true">
+    <div class="griditemcontent">
+      <metal:macro use-macro="context/resource_macros/macros/title" />
+      <p tal:content="python:item['creation_date']"></p>
+      <metal:macro use-macro="context/resource_macros/macros/preview_link" />
+    </div>
+    <div class="griditemfooter">
+      <div class="fileicon"><i class="fa fa-file"></i></div>
+      <div class="button button-dark">
+        <a class="color-yellow"
+            tal:define=" doc_url python:item['downloadfile_url']"
+            tal:attributes="href doc_url">
+            <span>DOWNLOAD</span><i class="fa fa-cloud-download-alt"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</metal:row>
+<metal:row define-macro="resource_without_preview">
+  <div class="light-background "
+      tal:define="absolute_url python:item['absolute_url'];
+                title python:item['title'];
+                target string: #full_view;
+                is_document string:false">
+    <div class="griditemcontent">
+      <metal:macro use-macro="context/resource_macros/macros/title" />
+      <p tal:content="python:item['creation_date']"></p>
+    </div>
+    <div class="griditemfooter">
+      <metal:macro use-macro="context/resource_macros/macros/read_more_button" />
+    </div>
+  </div>
+</metal:row>
+
+<metal:row define-macro="event_teaser" i18n:domain="sdswas.resources">
+  <div class="light-background "
+      tal:define="absolute_url python:item['absolute_url'];
+                  title python:item['title'];
+                  target string: #full_view;
+                  is_document string:false">
+    <div class="griditemcontent">
+        <metal:macro use-macro="context/resource_macros/macros/title" />
+        <p tal:content="python:item['start']"></p>
+    </div>
+    <div class="griditemfooter">
+      <metal:macro use-macro="context/resource_macros/macros/read_more_button" />
+    </div>
+  </div>
+</metal:row>
+
+
+</html>
