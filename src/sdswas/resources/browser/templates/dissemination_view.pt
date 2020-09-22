@@ -26,7 +26,7 @@
         <div id="document"
                 tal:define="picture nocall:context/document;"
               tal:condition="nocall:picture">
-            <div tal:define="title picture/filename" metal:use-macro="context/resource_macros/macros/filedownload" />
+            <div tal:define="title picture/filename" metal:use-macro="context/resourceslist_utils/macros/filedownload" />
         </div>
         <div id="share" class="section">
             <h6>Share</h6>

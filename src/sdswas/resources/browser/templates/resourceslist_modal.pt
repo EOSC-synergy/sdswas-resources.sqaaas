@@ -4,6 +4,7 @@
       xmlns:metal="http://xml.zope.org/namespaces/metal"
       xmlns:i18n="http://xml.zope.org/namespaces/i18n"
  >
+
 <metal:row define-macro="modal" i18n:domain="sdswas.events">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
@@ -29,15 +30,7 @@
       <!-- Body -->
       <div id="body" class="modal-body">
         <h2 id="title"></h2>
-        <div id="preloader">
-          <div class="modal-preloader_status">
-            <div class="modal-preloader_spinner">
-              <div class="d-flex justify-content-center">
-                <div class="spinner-border" role="status"></div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <metal:macro use-macro="context/resourceslist_utils/macros/preloader" />
         <div id="contents"></div>
       </div>
       <!-- Footer -->

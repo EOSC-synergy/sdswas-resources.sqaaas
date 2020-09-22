@@ -12,14 +12,16 @@
       />
 
   <!-- Publish static files -->
+
   <plone:static
       name="sdswas.resources"
       type="plone"
       directory="static"
       />
 
-     <!--Browser views-->
-    <browser:page
+  <!--Browser views-->
+
+  <browser:page
      name="disseminationview"
      for="*"
      layer="zope.interface.Interface"
@@ -28,41 +30,69 @@
      permission="zope2.View"
    />
 
-<browser:page
-   name="documentview"
-   for="*"
-   class=".DocumentView.DocumentView"
-   template="templates/document_view.pt"
-   permission="zope2.View"
-   layer="zope.interface.Interface"
-   />
-
-   <browser:page
-   name="resourceslist_view"
-   for="*"
-   class=".ResourceListView.ResourceListView"
-   template="templates/resourceslist_view.pt"
-   permission="zope2.View"
-   />
+  <browser:page
+      name="documentview"
+      for="*"
+      class=".DocumentView.DocumentView"
+      template="templates/document_view.pt"
+      permission="zope2.View"
+      layer="zope.interface.Interface"
+      />
 
   <browser:page
-    name="resource_macros"
-    for="*"
-    layer="zope.interface.Interface"
-    template="templates/resource_macros.pt"
-    permission="zope2.View"
-  />
+      name="resourceslist_view"
+      for="*"
+      class=".ResourceListView.ResourceListView"
+      template="templates/resourceslist_view.pt"
+      permission="zope2.View"
+      />
 
-   <browser:page
-     name="resources_modal"
+  <browser:page
+      name="resourceslist_contents"
+      for="*"
+      class=".ResourceListView.ResourceListView"
+      template="templates/resourceslist_contents.pt"
+      permission="zope2.View"
+      />
+
+  <browser:page
+      name="resourceslist_utils"
+      for="*"
+      layer="zope.interface.Interface"
+      template="templates/resourceslist_utils.pt"
+      permission="zope2.View"
+    />
+
+  <browser:page
+     name="resourceslist_menumobile"
      for="*"
      layer="zope.interface.Interface"
-     class=".DocumentView.DocumentView"
-     template="templates/modal.pt"
+     template="templates/resourceslist_menumobile.pt"
      permission="zope2.View"
    />
 
- <browser:resourceDirectory
+    <browser:page
+     name="resourceslist_menudesktop"
+     for="*"
+     layer="zope.interface.Interface"
+     template="templates/resourceslist_menudesktop.pt"
+     permission="zope2.View"
+   />
+
+
+
+  <browser:page
+     name="resourceslist_modal"
+     for="*"
+     layer="zope.interface.Interface"
+     class=".DocumentView.DocumentView"
+     template="templates/resourceslist_modal.pt"
+     permission="zope2.View"
+   />
+
+  <!-- Resource directory -->
+
+   <browser:resourceDirectory
       name="sdswas.resources"
       directory="static" />
 
