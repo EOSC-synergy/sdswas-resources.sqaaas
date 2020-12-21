@@ -7,38 +7,157 @@
       i18n:domain="sdswas.resources">
 
 <body>
-
 <metal:main fill-slot="main">
     <tal:main-macro metal:define-macro="main">
 
       <!--Page title-->
-      <section class="banner-top bg-color-white">
-          <div class="banner-top-wrap main-wrap main-padding">
-              <div class="banner-top-container main-container">
-                  <div class="page-title">
-                      <h1 tal:content="context/title" />
-                  </div>
-              </div>
-          </div>
-      </section>
+      <metal:macro use-macro="context/resources_utils/macros/page-title"
+          tal:define="page_title context/title"/>
+      <!--Page title ends-->
+
       <!-- Resources filter menu -->
-      <section id="resources-filter-menu-section" class="bg-color-grey-light">
+      <section id="resources-filter-menu-section" class="bg-color-grey-light"
+              tal:define="listbytype_viewname python:view.listbytype_viewname()">
+
         <div class="resources-filter-menu-wrap main-wrap main-padding">
-          <metal:macro use-macro="context/resourceslist_menumobile/macros/menu"/>
-          <metal:macro use-macro="context/resourceslist_menudesktop/macros/menu"/>
+          <!--<metal:macro use-macro="context/resourceslist_menumobile/macros/menu"/>-->
+
+          <!-- Resources filter menu on mobile -->
+          <div id="resources-filter-menu-mobile" class="filter-menu-mobile">
+
+            <p>Filter by: </p>
+
+            <!-- Filter btn with submenu -->
+            <div class="filter-btns-container-mobile">
+
+              <button id="main-filter-btn" class="main-filter-btn btn rounded-0" type="button"
+                data-value="publications"
+                data-contents-url="${listbytype_viewname}">
+                <div class="btn-g">
+                  <p class="btn-text">Publications</p>
+                  <i class="btn-icon icon-sort-down"></i>
+                </div>
+              </button>
+
+              <!-- Filter Submenu -->
+              <ul class="filter-submenu">
+
+                <li class="filter-submenu-btn-container">
+                  <button id="publications-btn-mobile" class="filter-submenu-btn btn rounded-0" type="button"
+                          data-contents-url="${listbytype_viewname}"
+                          data-value="publications">
+                    <div class="btn-g">
+                      <p>Publications</p>
+                    </div>
+                  </button>
+                </li>
+
+                <li class="filter-submenu-btn-container">
+                  <button id="past-events-btn-mobile" class="filter-submenu-btn btn rounded-0" type="button"
+                          data-contents-url="${listbytype_viewname}"
+                          data-value="genericevents">
+                    <div class="btn-g">
+                      <p>Past events</p>
+                    </div>
+                  </button>
+                </li>
+
+                <li class="filter-submenu-btn-container">
+                  <button id="webinars-btn-mobile" class="filter-submenu-btn btn rounded-0" type="button"
+                          data-contents-url="${listbytype_viewname}"
+                          data-value="webinars">
+                    <div class="btn-g">
+                      <p>Webinars</p>
+                    </div>
+                  </button>
+                </li>
+
+                <li class="filter-submenu-btn-container">
+                  <button id="technical-reports-btn-mobile" class="filter-submenu-btn btn rounded-0" type="button"
+                        data-contents-url="${listbytype_viewname}"
+                        data-value="techreports">
+                    <div class="btn-g">
+                      <p>Technical reports</p>
+                    </div>
+                  </button>
+                </li>
+
+                <li class="filter-submenu-btn-container">
+                  <button id="dissemination-btn-mobile" class="filter-submenu-btn btn rounded-0" type="button"
+                        data-contents-url="${listbytype_viewname}"
+                        data-value="disseminations">
+                    <div class="btn-g">
+                      <p>Disseminations</p>
+                    </div>
+                  </button>
+                </li>
+
+              </ul> <!-- Filter Submenu ends -->
+
+            </div> <!-- Filter btn with submenu ends -->
+
+          </div> <!-- Resources filter menu on mobile ends -->
+
+             <!-- Resources filter menu on desktop -->
+            <ul id="resources-filter-menu-desktop" class="filter-menu-desktop">
+
+                <p>Filter by: </p>
+
+                <!-- Btn -->
+                <li class="filter-btn-container">
+                    <button id="publications" class="filter-btn-desktop filter-btn-desktop-selected btn" type="button"
+                    data-contents-url="${listbytype_viewname}"
+                    data-value="publications">Publications</button>
+                </li>
+
+                <!-- Btn -->
+                <li class="filter-btn-container">
+                    <button class="filter-btn-desktop btn" type="button"
+                    data-contents-url="${listbytype_viewname}"
+                    data-value="genericevents">Past Events</button>
+                </li>
+
+                <!-- Btn -->
+                <li class="filter-btn-container">
+                    <button class="filter-btn-desktop btn" type="button"
+                     data-contents-url="${listbytype_viewname}"
+                     data-value="webinars">Webinars</button>
+                </li>
+
+                <!-- Btn -->
+                <li class="filter-btn-container">
+                    <button class="filter-btn-desktop btn" type="button"
+                    data-contents-url="${listbytype_viewname}"
+                    data-value="techreports">Technical reports</button>
+                </li>
+
+                <!-- Btn -->
+                <li class="filter-btn-container">
+                    <button class="filter-btn-desktop btn" type="button"
+                    data-contents-url="${listbytype_viewname}"
+                    data-value="disseminations">Disseminations</button>
+                </li>
+            </ul><!-- Resources filter menu on desktop ends -->
         </div>
       </section><!-- Resources filter ends -->
 
-      <section class="bg-color-white">
+      <!-- Resources cards -->
+      <section class="resources-cards bg-color-white">
 
-        <!-- <metal:macro use-macro="context/resourceslist_utils/macros/preloader"/>-->
-        <div id="resource-cards" class="cards-carpet-wrap main-wrap main-padding">/>
+        <!-- Resources cards wrap -->
+        <div class="main-wrap main-padding">
+        </div>
+        <!-- Resources cards carpet ends -->
+
+        <!-- Loader overlay -->
+          <metal:macro use-macro="context/resources_utils/macros/preloader"/>
+        <!-- Loader overlay ends -->
 
       </section><!-- Resources cards carpet ends -->
 
-      <div id="full_view" class="modal fade" tabindex="-1" role="dialog">
-        <metal:macro use-macro="context/resourceslist_modal/macros/modal"/>
-     </div>
+      <section class="bg-color-white">
+
+      </section>
 
   </tal:main-macro>
 </metal:main>

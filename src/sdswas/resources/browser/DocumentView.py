@@ -7,3 +7,4 @@ class DocumentView(DefaultView):
         super(DefaultView, self).update()
         self.request.set('disable_plone.rightcolumn',1)
         self.request.set('disable_plone.leftcolumn',1)
+

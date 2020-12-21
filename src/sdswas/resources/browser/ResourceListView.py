@@ -2,6 +2,7 @@
 from plone.dexterity.browser.view import DefaultView
 import datetime as dt
 from plone import api
+from plone.batching import Batch
 
 class ResourceListView(DefaultView):
 
@@ -27,9 +28,8 @@ class ResourceListView(DefaultView):
                     'title': resObj.Title(),
                     'creation_date': resObj.created().strftime('%-d %B %Y'),
                     'absolute_url': resObj.absolute_url(),
-                    'downloadfile_url': resObj.absolute_url()+'/@@download/file/',
+                    'downloadfile_url': resObj.absolute_url()+'/@@download/file/'
                     })
-
         return results
 
     def past_events(self, event_type):
@@ -90,3 +90,10 @@ class ResourceListView(DefaultView):
 
         return results
 
+    def listbytype_viewname(self):
+        portal = api.portal.get()
+        return portal.absolute_url()+"/resources/@@resourceslist_"
+
+    def resources_url(self):
+        portal = api.portal.get()
+        return portal.absolute_url()+"/resources/"

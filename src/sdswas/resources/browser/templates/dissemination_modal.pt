@@ -1,0 +1,85 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      i18n:domain="sdswas.resources">
+
+<metal:row define-macro="main-content" i18n:domain="sdswas.resources">
+  <div class="modwin-main-content bg-color-white">
+      <!-- Modal window title -->
+      <div metal:use-macro="context/resources_utils/macros/modalsectiontitle"/>
+      <!-- Modal window title ends -->
+      <!-- Modal window image -->
+      <section class="modwin-image-section">
+        <div class="modwin-image-wrap modwin-padding">
+          <div class="modwin-image-container">
+            <div class="modwin-image"
+                tal:condition="context/image">
+                    <img tal:attributes="src string:${context/absolute_url}/@@download/image/${context/image/filename};">
+                </div>
+            </div>
+
+            <div tal:condition="context/embedded_url"
+                  class="col-md-16 embed-responsive embed-responsive-16by9">
+                <iframe class="embed-responsive-item"
+                    tal:attributes="src python:view.embedded_url();
+                                    allowfullscreen True"/>
+            </div>
+        </div>
+      </section><!-- Modal window text ends -->
+      <!-- Modal window text -->
+      <section class="modwin-text-section">
+        <div class="modwin-text-wrap modwin-padding">
+          <div class="modwin-text-container">
+            <div class="modwin-text" tal:content="structure context/full_description/raw" >
+            </div>
+          </div>
+        </div>
+      </section><!-- Modal window text ends -->
+
+      <!-- Modal window sidepanel section -->
+      <section class="modwin-sidepanel-section">
+        <div class="modwin-sidepanel-wrap modwin-padding">
+          <div class="modwin-sidepanel-container">
+
+            <!-- Modal window sidepanel -->
+            <div class="modwin-sidepanel">
+
+              <div class="sidepanel-cta-component"
+                   tal:define="picture nocall:context/document;"
+                   tal:condition="nocall:picture">
+                    <div tal:define="title picture/filename"
+                          metal:use-macro="context/resources_utils/macros/filedownload"/>
+              </div>  <!-- Sidepanel cta component ends -->
+
+              <!-- Sidepanel share component -->
+              <div class="sidepanel-share-component">
+                <h4>Share</h4>
+
+                <div class="share-btns">
+
+                  <a href="https://www.facebook.com/sharer/sharer.php?u=atext" class="share-btn" title="Share on Facebook">
+                    <i class="icon-facebook"></i>
+                  </a>
+
+                  <a href="https://twitter.com/intent/tweet?text=atext" class="share-btn" title="Share on Twitter">
+                    <i class="icon-twitter"></i>
+                  </a>
+
+                  <a href="#" class="share-btn" title="Share on LinkedIn">
+                    <i class="icon-linkedin"></i>
+                  </a>
+
+                </div>
+
+              </div><!-- Sidepanel share component ends -->
+            </div>
+            <!-- Modal window sidepanel ends -->
+          </div>
+        </div>
+      </section>
+      <!-- Modal window sidepanel section ends -->
+    </div>
+  </metal:row>
+</html>

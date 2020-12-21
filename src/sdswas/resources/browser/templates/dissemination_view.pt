@@ -7,44 +7,11 @@
       i18n:domain="sdswas.resources">
 <body>
     <metal:main fill-slot="main">
-        <div class="section">
-            <div tal:define="picture nocall:context/image"
-                    tal:condition="nocall:picture">
-                    <img tal:attributes="src string:${context/absolute_url}/@@download/image/${picture/filename};
-                                        height string:100%;
-                                        width string:100%"
-                        />
-            </div>
-            <div tal:condition="context/embedded_url" class="col-md-16 embed-responsive embed-responsive-16by9">
-                <iframe class="embed-responsive-item"
-                    tal:attributes="src view/embedded_url;
-                                    allowfullscreen True"></iframe>
-            </div>
-        </div>
-
-        <div class="section" tal:content="structure view/w/full_description/render" ></div>
-        <div id="document"
-                tal:define="picture nocall:context/document;"
-              tal:condition="nocall:picture">
-            <div tal:define="title picture/filename" metal:use-macro="context/resourceslist_utils/macros/filedownload" />
-        </div>
-        <div id="share" class="section">
-            <h6>Share</h6>
-            <ul class="icons-list icons-list--bordered ">
-                <li class="facebook">
-                <a href="https://www.facebook.com/sharer/sharer.php?u=atext"><i class="fab fa-facebook-f"></i></a>
-                </li>
-                <li class="twitter">
-                <a href="https://twitter.com/intent/tweet?text=atext"><i class="fab fa-twitter"></i></a>
-                </li>
-                <li class="youtube">
-                <a href="https://www.youtube.com/channel/UCOxcWuLnZPAzgnsQZoNLvuQ"><i class="fab fa-linkedin-in"></i></a>
-                </li>
-                <li class="linkedin">
-                    <a href="https://www.linkedin.com/company/s2s4e"><i class="fab fa-instagram"></i></a>
-                </li>
-            </ul>
-        </div>
-    </metal:main>
+            <metal:macro use-macro="context/resources_utils/macros/page-title"
+                        tal:define="page_title string:Resources"/>
+            <metal:macro use-macro="context/resources_utils/macros/breadcumb"
+                         tal:define="url string:${portal_url}/resources/">
+            <metal:macro use-macro="context/dissemination_modal/macros/main-content"/>
+     </metal:main>
 </body>
 </html>

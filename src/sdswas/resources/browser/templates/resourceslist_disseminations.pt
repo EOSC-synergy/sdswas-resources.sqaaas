@@ -1,0 +1,25 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+ >
+<!-- Disseminations Cards container -->
+<div id="disseminations" class="resources-cards-container main-container"
+        tal:define="items python:view.dissemination_resources();" >
+        <tal:row tal:repeat="item items">
+                <!-- Card -->
+                <div class="resources-card"
+                        tal:define="small_info python:item['creation_date'];
+                                    url python:item['absolute_url']"
+                        tal:attributes="data-gobacklink string:< BACK TO DISSEMINATIONS;
+                                        data-url string:${url}/dissemination_modal;
+                                        data-title python:item['title']">
+
+                        <metal:macro use-macro="context/resources_utils/macros/resource_without_preview" />
+                </div>
+                <!-- Cards container ends -->
+        </tal:row>
+
+</div>
+</html>

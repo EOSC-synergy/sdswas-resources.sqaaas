@@ -3,6 +3,7 @@ import re
 
 class DisseminationView(DefaultView):
 
+
    def update(self):
       ## Disable all portlets
       super(DefaultView, self).update()
@@ -10,6 +11,7 @@ class DisseminationView(DefaultView):
       self.request.set('disable_plone.leftcolumn',1)
 
    def embedded_url(self):
+
       ## Returns the URL stored in the field embedded_url to be used as the source URL of the video field
       ## If it is not a valid youtube embed URL then convert it
       url = self.context.embedded_url

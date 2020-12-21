@@ -1,0 +1,118 @@
+ <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+ >
+
+<metal:row define-macro="filedownload" i18n:domain="sdswas.resources">
+    <h4 tal:content="title"></h4>
+    <a class="outlined-cta"
+        href="${context/absolute_url}/@@download/document/${view/w/document/filename}"
+        target="_self">
+      <p>DOWNLOAD</p>
+        <i class="icon-download"></i>
+    </a>
+</metal:row>
+
+<metal:row define-macro="page-title" i18n:domain="sdswas.resources">
+    <section class="banner-top bg-color-white">
+        <div class="banner-top-wrap main-wrap main-padding">
+            <div class="banner-top-container main-container">
+                <div class="page-title">
+                    <h1 tal:content="page_title"/>
+                </div>
+            </div>
+        </div>
+    </section>
+</metal:row>
+
+<metal:row define-macro="modalsectiontitle" i18n:domain="sdswas.resources">
+  <section class="modwin-title-section">
+    <div class="modwin-title-wrap modwin-padding">
+      <div class="modwin-title-container">
+        <div class="modwin-title">
+          <h2 tal:content="context/title"/>
+        </div>
+      </div>
+    </div>
+  </section>
+</metal:row>
+
+<metal:row define-macro="resource_with_preview" i18n:domain="sdswas.resources">
+    <!-- Card content -->
+  <div class="resources-card-content" tal:attributes="data-title python:item['title']">
+
+    <a class="resources-card-title js-card-trigger"><h3 tal:content="python:item['title']"/></a>
+    <div class="resources-card-small-info"><p tal:content="small_info"></p></div>
+    <a class="resources-text-link js-card-trigger" title="Preview this resource"><p>PREVIEW</p></a>
+
+ </div><!-- Card content ends -->
+
+  <!-- Resources card cta -->
+  <a class="resources-card-cta" target="_self" tal:attributes="href python:item['downloadfile_url']">
+
+    <div class="card-cta-icon"><i class="icon-pdf"></i></div>
+    <div class="card-cta-text"><p>Download</p><i class="icon-download"></i></div>
+
+  </a><!-- Resources card cta ends -->
+</metal:row>
+
+<metal:row define-macro="resource_without_preview" i18n:domain="sdswas.resources">
+
+  <!-- Card content -->
+  <div class="resources-card-content">
+
+    <a class="resources-card-title js-card-trigger"><h3 tal:content="python:item['title']"/></a>
+    <div class="resources-card-small-info"><p tal:content="small_info"></p></div>
+
+ </div><!-- Card content ends -->
+
+  <!-- Resources card cta -->
+  <a class="resources-card-cta js-card-trigger">
+
+    <div class="card-cta-icon"><i class="icon-event"></i></div>
+    <div class="card-cta-text"><p>Read more</p><i class=""></i></div>
+
+  </a><!-- Resources card cta ends -->
+</metal:row>
+
+<metal:row define-macro="preloader" i18n:domain="sdswas.resources">
+
+  <!-- Loader overlay -->
+  <div class="loader-overlay">
+    <!-- Loader container -->
+    <div class="loader-container">
+
+      <div><p class="loader-title">Barcelona Dust Regional Center</p></div>
+
+      <div class="dots-container">
+        <div class="loader-dot"></div>
+        <div class="loader-dot"></div>
+        <div class="loader-dot"></div>
+        <div class="loader-dot"></div>
+        <div class="loader-dot"></div>
+        <div class="loader-dot"></div>
+        <div class="loader-dot"></div>
+      </div>
+    </div>
+    <!-- Loader container ends -->
+  </div>
+  <!-- Loader overlay ends -->
+</metal:row>
+
+<metal:row define-macro="breadcumb" i18n:domain="sdswas.resources">
+
+  <!--Resource breadcrum btn -->
+  <section>
+    <div class="modwin-title-wrap bg-color-white">
+      <a class="modwin-back-link modwin-main-content" tal:attributes="href url">
+        <p class="breadcrum-text"
+            tal:content="string:< Back to Resources"></p>
+      </a>
+    </div><!-- Resource breadcrum btn ends -->
+  </section>
+
+</metal:row>
+
+</html>

@@ -22,22 +22,23 @@
   <!--Browser views-->
 
   <browser:page
-     name="disseminationview"
-     for="*"
-     layer="zope.interface.Interface"
-     class=".DisseminationView.DisseminationView"
-     template="templates/dissemination_view.pt"
-     permission="zope2.View"
-   />
-
-  <browser:page
-      name="documentview"
+      name="document_view"
       for="*"
       class=".DocumentView.DocumentView"
       template="templates/document_view.pt"
       permission="zope2.View"
       layer="zope.interface.Interface"
       />
+
+  <browser:page
+      name="document_modal"
+      for="*"
+      class=".DocumentView.DocumentView"
+      template="templates/document_modal.pt"
+      permission="zope2.View"
+      layer="zope.interface.Interface"
+      />
+
 
   <browser:page
       name="resourceslist_view"
@@ -48,45 +49,72 @@
       />
 
   <browser:page
-      name="resourceslist_contents"
+      name="resourceslist_publications"
       for="*"
       class=".ResourceListView.ResourceListView"
-      template="templates/resourceslist_contents.pt"
+      template="templates/resourceslist_publications.pt"
       permission="zope2.View"
       />
 
   <browser:page
-      name="resourceslist_utils"
+      name="resourceslist_genericevents"
+      for="*"
+      class=".ResourceListView.ResourceListView"
+      template="templates/resourceslist_genericevents.pt"
+      permission="zope2.View"
+      />
+
+
+  <browser:page
+      name="resourceslist_webinars"
+      for="*"
+      class=".ResourceListView.ResourceListView"
+      template="templates/resourceslist_webinars.pt"
+      permission="zope2.View"
+      />
+
+
+  <browser:page
+      name="resourceslist_techreports"
+      for="*"
+      class=".ResourceListView.ResourceListView"
+      template="templates/resourceslist_techreports.pt"
+      permission="zope2.View"
+      />
+
+
+  <browser:page
+      name="resourceslist_disseminations"
+      for="*"
+      class=".ResourceListView.ResourceListView"
+      template="templates/resourceslist_disseminations.pt"
+      permission="zope2.View"
+      />
+
+  <browser:page
+      name="resources_utils"
       for="*"
       layer="zope.interface.Interface"
-      template="templates/resourceslist_utils.pt"
+      template="templates/resources_utils.pt"
       permission="zope2.View"
     />
 
   <browser:page
-     name="resourceslist_menumobile"
+     name="dissemination_view"
      for="*"
      layer="zope.interface.Interface"
-     template="templates/resourceslist_menumobile.pt"
+     class=".DisseminationView.DisseminationView"
+     template="templates/dissemination_view.pt"
      permission="zope2.View"
    />
-
-    <browser:page
-     name="resourceslist_menudesktop"
-     for="*"
-     layer="zope.interface.Interface"
-     template="templates/resourceslist_menudesktop.pt"
-     permission="zope2.View"
-   />
-
 
 
   <browser:page
-     name="resourceslist_modal"
+     name="dissemination_modal"
      for="*"
      layer="zope.interface.Interface"
-     class=".DocumentView.DocumentView"
-     template="templates/resourceslist_modal.pt"
+     class=".DisseminationView.DisseminationView"
+     template="templates/dissemination_modal.pt"
      permission="zope2.View"
    />
 
