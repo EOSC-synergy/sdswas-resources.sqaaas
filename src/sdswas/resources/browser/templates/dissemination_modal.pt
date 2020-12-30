@@ -11,11 +11,11 @@
       <div metal:use-macro="context/resources_utils/macros/modalsectiontitle"/>
       <!-- Modal window title ends -->
       <!-- Modal window image -->
-      <section class="modwin-image-section">
+      <section class="modwin-image-section"  tal:condition="context/image">
         <div class="modwin-image-wrap modwin-padding">
           <div class="modwin-image-container">
             <div class="modwin-image"
-                tal:condition="context/image">
+               >
                     <img tal:attributes="src string:${context/absolute_url}/@@download/image/${context/image/filename};">
                 </div>
             </div>
