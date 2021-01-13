@@ -5,29 +5,37 @@
       xmlns:i18n="http://xml.zope.org/namespaces/i18n"
       i18n:domain="sdswas.resources">
 
-<metal:row define-macro="main-content" i18n:domain="sdswas.resources">
+<metal:row define-macro="main-content" i18n:domain="sdswas.resources"
+            tal:define = "image context/image;
+                          embedded_url context/embedded_url">
   <div class="modwin-main-content bg-color-white">
       <!-- Modal window title -->
       <div metal:use-macro="context/resources_utils/macros/modalsectiontitle"/>
       <!-- Modal window title ends -->
       <!-- Modal window image -->
-      <section class="modwin-image-section"  tal:condition="context/image">
+      <section class="modwin-image-section"  tal:condition="nocall:image">
+        <div class="modwin-image-wrap modwin-padding" tal:condition="nocall:image">
+          <div class="modwin-image-container">
+            <div class="modwin-image">
+                <img tal:attributes="src string:${context/absolute_url}/@@download/image/${context/image/filename};">
+            </div>
+          </div>
+        </div>
+      </section><!-- Modal window image ends -->
+
+      <!-- Modal window video -->
+      <section class="modwin-image-section"  tal:condition="nocall:embedded_url">
         <div class="modwin-image-wrap modwin-padding">
           <div class="modwin-image-container">
-            <div class="modwin-image"
-               >
-                    <img tal:attributes="src string:${context/absolute_url}/@@download/image/${context/image/filename};">
-                </div>
-            </div>
-
-            <div tal:condition="context/embedded_url"
-                  class="col-md-16 embed-responsive embed-responsive-16by9">
+              <div tal:condition="nocall:embedded_url"
+                    class="col-md-16 embed-responsive embed-responsive-16by9">
                 <iframe class="embed-responsive-item"
                     tal:attributes="src python:view.embedded_url();
-                                    allowfullscreen True"/>
-            </div>
+                                  allowfullscreen True"/>
+          </div>
         </div>
-      </section><!-- Modal window text ends -->
+      </section><!-- Modal window video ends -->
+
       <!-- Modal window text -->
       <section class="modwin-text-section">
         <div class="modwin-text-wrap modwin-padding">

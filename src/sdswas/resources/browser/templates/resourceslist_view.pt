@@ -155,9 +155,6 @@
 
       </section><!-- Resources cards carpet ends -->
 
-      <section class="bg-color-white">
-
-      </section>
 
   </tal:main-macro>
 </metal:main>
