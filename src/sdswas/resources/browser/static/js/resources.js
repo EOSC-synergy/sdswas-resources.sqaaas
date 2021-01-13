@@ -178,7 +178,7 @@
                         });
 
 
-                        var url = Resources.filterMenu.filterDataUrl + Resources.filterMenu.filterDataValue + '?b_start:int=5';
+                        var url = Resources.filterMenu.filterDataUrl + Resources.filterMenu.filterDataValue;
                         Resources.cardsContainer.update(url);
 
                         App.con("----**** Main filter button data-value is : " + Resources.filterMenu.filterDataValue);
