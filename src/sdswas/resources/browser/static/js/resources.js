@@ -55,7 +55,9 @@
                         // Trim titles
                         $(".resources-card-title :first-child").each(function() {
                             var text = $(this).text();
-                            $(this).text(Utils.textTrimmer(text, Resources.cards.titleLenght));
+                            var maxlength = Resources.cards.titleLenght;
+                            $(this).text(Utils.textTrimmer(text, maxlength));
+                            if(text.length > maxlength) $(this).attr("title", text);
                         });
                     },
 
