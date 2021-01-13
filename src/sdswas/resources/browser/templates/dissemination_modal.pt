@@ -14,7 +14,7 @@
       <!-- Modal window title ends -->
       <!-- Modal window image -->
       <section class="modwin-image-section"  tal:condition="nocall:image">
-        <div class="modwin-image-wrap modwin-padding" tal:condition="nocall:image">
+        <div class="modwin-image-wrap modwin-padding">
           <div class="modwin-image-container">
             <div class="modwin-image">
                 <img tal:attributes="src string:${context/absolute_url}/@@download/image/${context/image/filename};">
@@ -27,11 +27,11 @@
       <section class="modwin-image-section"  tal:condition="nocall:embedded_url">
         <div class="modwin-image-wrap modwin-padding">
           <div class="modwin-image-container">
-              <div tal:condition="nocall:embedded_url"
-                    class="col-md-16 embed-responsive embed-responsive-16by9">
+              <div class="col-md-16 embed-responsive embed-responsive-16by9">
                 <iframe class="embed-responsive-item"
                     tal:attributes="src python:view.embedded_url();
                                   allowfullscreen True"/>
+              </div>
           </div>
         </div>
       </section><!-- Modal window video ends -->
