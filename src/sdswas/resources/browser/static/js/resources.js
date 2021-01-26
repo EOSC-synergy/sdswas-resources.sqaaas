@@ -261,7 +261,6 @@
 
             $(document).ready(function() {
                 Resources.init();
-                App.showPage();
             });
         })(jQuery);
     });
