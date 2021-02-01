@@ -27,18 +27,6 @@
     </section>
 </metal:row>
 
-<metal:row define-macro="modalsectiontitle" i18n:domain="sdswas.resources">
-  <section class="modwin-title-section">
-    <div class="modwin-title-wrap modwin-padding">
-      <div class="modwin-title-container">
-        <div class="modwin-title">
-          <h2 tal:content="context/title"/>
-        </div>
-      </div>
-    </div>
-  </section>
-</metal:row>
-
 <metal:row define-macro="resource_with_preview" i18n:domain="sdswas.resources">
     <!-- Card content -->
   <div class="resources-card-content" tal:attributes="data-title python:item['title']">
