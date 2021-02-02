@@ -7,6 +7,11 @@
       i18n:domain="sdswas.resources">
 
 <body>
+<metal:javascriptslot fill-slot="javascript_head_slot">
+    <script type="text/javascript" tal:define="navroot context/@@plone_portal_state/navigation_root_url"
+            tal:attributes="src string:${navroot}/++resource++sdswas.resources/js/resources.js"/>
+</metal:javascriptslot>
+
 <metal:main fill-slot="main">
     <tal:main-macro metal:define-macro="main">
 
