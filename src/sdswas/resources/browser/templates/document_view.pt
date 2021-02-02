@@ -9,6 +9,8 @@
     <metal:main fill-slot="main">
         <metal:macro use-macro="context/resources_utils/macros/page-title"
                 tal:define="page_title string:Resources"/>
+        <metal:macro use-macro="context/resources_utils/macros/breadcumb"
+                         tal:define="url string:${portal_url}/resources/">
         <metal:macro use-macro="context/document_modal/macros/main-content"/>
    </metal:main>
 </body>
