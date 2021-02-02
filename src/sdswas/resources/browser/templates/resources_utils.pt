@@ -93,7 +93,7 @@
 
   <!--Resource breadcrum btn -->
   <section>
-    <div class="modwin-title-wrap bg-color-white">
+    <div class="modwin-title-wrap bg-color-white modwin-padding-t modwin-padding-lr">
       <a class="modwin-back-link modwin-main-content" tal:attributes="href url">
         <p class="breadcrum-text"
             tal:content="string:< Back to Resources"></p>
