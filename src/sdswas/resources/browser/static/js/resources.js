@@ -68,7 +68,7 @@
                             $(this).on("click", ".js-card-trigger", function(event) {
                                 event.preventDefault();
                                 //this is the current trigger but we use the parent who set the event because it has the data to be used by its children
-                                Resources.cards.populateModal(event.delegateTarget);
+                                ModalWindow.populateModal(event.delegateTarget);
                             });
                         });
 
@@ -86,20 +86,6 @@
 
                         });
                     },
-                    populateModal: function(trigger) {
-
-                        /*Set available information (title and go back link)*/
-                        ModalWindow.gobackLink.text($(trigger).attr("data-gobacklink"));
-                        ModalWindow.title.text($(trigger).attr("data-title"));
-
-                        var url = $(trigger).attr("data-url");
-                        /**Fetch the rest of the information: contents of the body */
-                        ModalWindow.body.load(url, function(responseTxt, statusTxt, xhr) {
-                            if (statusTxt = "success") {}
-                            ModalWindow.open();
-                        });
-                    },
-
                 },
 
                 filterMenu: {
@@ -225,23 +211,6 @@
                         Resources.filterMenu.update(btnClickedDataValue);
                     }
                 },
-                populateModal: function(trigger) {
-
-                    /*Set available information (title and go back link)*/
-                    ModalWindow.gobackLink.text($(trigger).attr("data-gobacklink"));
-                    ModalWindow.title.text($(trigger).attr("data-title"));
-
-                    /**Fetch the rest of the information: contents of the body */
-                    $.ajax({
-                        url: $(trigger).attr("data-url"),
-                        success: function(data) {
-                            ModalWindow.body.append(data);
-                            ModalWindow.open();
-                        },
-                        dataType: 'html'
-                    });
-                },
-
 
                 cardsContainer: {
                     update: function(url) {
@@ -255,8 +224,6 @@
                         })
                     },
                 }
-
-
             }
 
             $(document).ready(function() {
