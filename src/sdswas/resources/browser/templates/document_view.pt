@@ -9,8 +9,19 @@
     <metal:main fill-slot="main">
         <metal:macro use-macro="context/resources_utils/macros/page-title"
                 tal:define="page_title string:Resources"/>
-        <metal:macro use-macro="context/resources_utils/macros/breadcumb"
-                         tal:define="url string:${portal_url}/resources/">
+
+        <!--Resource breadcrum btn -->
+        <!--This section does not have a bottom padding because it its followed by a title which do have top padding.
+        Thus, this section is different than the homonymous section in dissemination_view-->
+        <section tal:define="url string:${portal_url}/resources/">>
+        <div class="modwin-title-wrap bg-color-white modwin-padding">
+            <a class="modwin-back-link modwin-main-content" tal:attributes="href url">
+            <p class="breadcrum-text"
+                tal:content="string:< Back to Resources"></p>
+            </a>
+        </div><!-- Resource breadcrum btn ends -->
+        </section>
+
         <metal:macro use-macro="context/document_modal/macros/main-content"/>
    </metal:main>
 </body>
