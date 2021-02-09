@@ -68,7 +68,7 @@
                             $(this).on("click", ".js-card-trigger", function(event) {
                                 event.preventDefault();
                                 //this is the current trigger but we use the parent who set the event because it has the data to be used by its children
-                                ModalWindow.populateModal(event.delegateTarget);
+                                Resources.populateModal(event.delegateTarget);
                             });
                         });
 
@@ -86,6 +86,23 @@
 
                         });
                     },
+
+                },
+
+                populateModal: function(trigger) {
+
+                    /*Set available information (title and go back link)*/
+                    ModalWindow.gobackLink.text($(trigger).attr("data-gobacklink"));
+                    ModalWindow.title.text($(trigger).attr("data-title"));
+
+                    var url = $(trigger).attr("data-url");
+                    /**Fetch the rest of the information: contents of the body */
+                    $(".modwin-main-content").load(url, function(responseTxt, statusTxt, xhr) {
+                        if (statusTxt = "success") {
+                            EventPresentations.init();
+                        }
+                        ModalWindow.open();
+                    });
                 },
 
                 filterMenu: {
