@@ -7,7 +7,8 @@
 
 <metal:row define-macro="main-content" i18n:domain="sdswas.resources"
             tal:define = "image context/image;
-                          embedded_url context/embedded_url">
+                          embedded_url context/embedded_url;
+                          share_url string:${context/absolute_url}">
 
   <div class="modwin-main-content bg-color-white">
 
@@ -65,26 +66,9 @@
             </div>  <!-- Sidepanel cta component ends -->
 
             <!-- Sidepanel share component -->
-            <div class="sidepanel-share-component">
-              <h4>Share</h4>
+            <tal metal:use-macro="context/share_social_networks/macros/sidepanel"/>
+            <!-- Sidepanel share component ends-->
 
-              <div class="share-btns">
-
-                <a href="https://www.facebook.com/sharer/sharer.php?u=atext" class="share-btn" title="Share on Facebook">
-                  <i class="icon-facebook"></i>
-                </a>
-
-                <a href="https://twitter.com/intent/tweet?text=atext" class="share-btn" title="Share on Twitter">
-                  <i class="icon-twitter"></i>
-                </a>
-
-                <a href="#" class="share-btn" title="Share on LinkedIn">
-                  <i class="icon-linkedin"></i>
-                </a>
-
-              </div>
-
-            </div><!-- Sidepanel share component ends -->
           </div>
           <!-- Modal window sidepanel ends -->
         </div>

@@ -7,17 +7,26 @@
 
 <metal:row define-macro="main-content" i18n:domain="sdswas.resources">
 
-    <section class="modwin-pdf-section">
-      <div class="main-wrap main-padding">
-        <div class="main-container">
-          <div tal:condition="context/file"
-            class="col-md-16 embed-responsive embed-responsive-16by9">
-            <iframe class="embed-responsive-item"
-                tal:attributes="src string:${context/absolute_url}/@@images/file;
-                                allowfullscreen True"/>
-          </div>
-      </div>
-    </section>
+  <section class="modwin-text-section"
+            tal:define="share_url string:${context/absolute_url}">
+    <div class="main-wrap modwin-padding-lr">
+      <!-- Sidepanel share component -->
+      <tal metal:use-macro="context/share_social_networks/macros/sidepanel"/>
+      <!-- Sidepanel share component ends-->
+    </div>
+  </section>
+
+  <section class="modwin-pdf-section">
+    <div class="main-wrap main-padding">
+      <div class="main-container">
+        <div tal:condition="context/file"
+          class="col-md-16 embed-responsive embed-responsive-16by9">
+          <iframe class="embed-responsive-item"
+              tal:attributes="src string:${context/absolute_url}/@@images/file;
+                              allowfullscreen True"/>
+        </div>
+    </div>
+  </section>
 
 </metal:row>
 </html>
