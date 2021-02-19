@@ -7,8 +7,7 @@
 
 <metal:row define-macro="main-content" i18n:domain="sdswas.resources">
 
-  <section class="modwin-text-section"
-            tal:define="share_url string:${context/absolute_url}">
+  <section class="modwin-text-section">
     <div class="main-wrap modwin-padding-lr">
       <!-- Sidepanel share component -->
       <tal metal:use-macro="context/share_social_networks/macros/sidepanel"/>

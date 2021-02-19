@@ -7,8 +7,7 @@
 
 <metal:row define-macro="main-content" i18n:domain="sdswas.resources"
             tal:define = "image context/image;
-                          embedded_url context/embedded_url;
-                          share_url string:${context/absolute_url}">
+                          embedded_url context/embedded_url;">
 
   <div class="modwin-main-content bg-color-white">
 
