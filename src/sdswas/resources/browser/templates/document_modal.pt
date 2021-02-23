@@ -7,11 +7,13 @@
 
 <metal:row define-macro="main-content" i18n:domain="sdswas.resources">
 
-  <section class="modwin-text-section">
-    <div class="main-wrap modwin-padding-lr">
-      <!-- Sidepanel share component -->
-      <tal metal:use-macro="context/share_social_networks/macros/sidepanel"/>
-      <!-- Sidepanel share component ends-->
+  <section class="modwin-share-component">
+    <div class="modwin-padding-lr">
+      <div class="modwin-share-component-container">
+        <!-- Sidepanel share component -->
+        <tal metal:use-macro="context/share_social_networks/macros/sidepanel"/>
+        <!-- Sidepanel share component ends-->
+      </div>
     </div>
   </section>
 

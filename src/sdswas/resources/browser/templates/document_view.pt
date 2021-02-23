@@ -13,7 +13,7 @@
         <!--Resource breadcrum btn -->
         <!--This section does not have a bottom padding because it its followed by a title which do have top padding.
         Thus, this section is different than the homonymous section in dissemination_view-->
-        <section tal:define="url string:${portal_url}/resources/">>
+        <section tal:define="url string:${portal_url}/resources/">
         <div class="modwin-title-wrap bg-color-white modwin-padding">
             <a class="modwin-back-link" tal:attributes="href url">
             <p class="breadcrum-text"
