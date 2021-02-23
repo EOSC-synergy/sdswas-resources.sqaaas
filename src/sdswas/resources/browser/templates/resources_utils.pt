@@ -6,7 +6,7 @@
  >
 
 <metal:row define-macro="filedownload" i18n:domain="sdswas.resources">
-    <h4 tal:content="title"></h4>
+    <h4 class="modwin-cta-comp-title" tal:content="title"/>
     <a class="outlined-cta"
         href="${context/absolute_url}/@@download/document/${view/w/document/filename}"
         target="_self">
@@ -94,7 +94,7 @@
   <!--Resource breadcrum btn -->
   <section>
     <div class="modwin-title-wrap bg-color-white modwin-padding-t modwin-padding-lr">
-      <a class="modwin-back-link modwin-main-content" tal:attributes="href url">
+      <a class="modwin-back-link" tal:attributes="href url">
         <p class="breadcrum-text"
             tal:content="string:< Back to Resources"></p>
       </a>
