@@ -18,10 +18,13 @@
   </section>
 
   <!-- Document embed section -->
-  <metal:macro use-macro="context/document_embed/macros/master"
-      tal:define="field_name string:file;
-                  file context/file"/>
-  <!-- Document embed section ends-->
+  <section class="modwin-pdf-section">
+    <div class="main-wrap main-padding">
+      <metal:macro use-macro="context/document_embed/macros/master"
+          tal:define="field_name string:file;
+                      file context/file"/>
+    </div>
+  </section>  <!-- Document embed section ends-->
 
 </metal:row>
 </html>
