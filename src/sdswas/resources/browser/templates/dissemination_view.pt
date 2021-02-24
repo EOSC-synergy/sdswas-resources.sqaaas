@@ -12,7 +12,7 @@
 
             <!--Resource breadcrum btn -->
             <!--This section has a bottom padding and the homonymous section in document_view does not-->
-            <section tal:define="url string:${portal_url}/resources/">>
+            <section tal:define="url string:${portal_url}/resources/">
             <div class="modwin-title-wrap bg-color-white modwin-padding-t modwin-padding-lr">
                   <a class="modwin-back-link" tal:attributes="href url">
                   <p class="breadcrum-text"
