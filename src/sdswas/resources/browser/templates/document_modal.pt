@@ -17,17 +17,11 @@
     </div>
   </section>
 
-  <section class="modwin-pdf-section">
-    <div class="main-wrap main-padding">
-      <div class="main-container">
-        <div tal:condition="context/file"
-          class="col-md-16 embed-responsive embed-responsive-16by9">
-          <iframe class="embed-responsive-item"
-              tal:attributes="src string:${context/absolute_url}/@@images/file;
-                              allowfullscreen True"/>
-        </div>
-    </div>
-  </section>
+  <!-- Document embed section -->
+  <metal:macro use-macro="context/document_embed/macros/master"
+      tal:define="field_name string:file;
+                  file context/file"/>
+  <!-- Document embed section ends-->
 
 </metal:row>
 </html>
