@@ -18,8 +18,8 @@
     <tal:main-macro metal:define-macro="main">
 
       <!--Page title-->
-      <metal:macro use-macro="context/resources_utils/macros/page-title"
-          tal:define="page_title context/title"/>
+      <metal:macro use-macro="context/banner_title_macro/macros/master"
+            tal:define="title context/title"/>
       <!--Page title ends-->
 
       <!-- Resources filter menu -->

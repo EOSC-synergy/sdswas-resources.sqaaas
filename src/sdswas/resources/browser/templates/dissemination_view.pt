@@ -14,8 +14,10 @@
 
 <body>
     <metal:main fill-slot="main">
-      <metal:macro use-macro="context/resources_utils/macros/page-title"
-                  tal:define="page_title string:Resources"/>
+
+            <!--Page title-->
+            <metal:macro use-macro="context/banner_title_macro/macros/master"
+                  tal:define="title string:Resources"/>
 
             <!--Resource breadcrum btn -->
             <!--This section has a bottom padding and the homonymous section in document_view does not-->
