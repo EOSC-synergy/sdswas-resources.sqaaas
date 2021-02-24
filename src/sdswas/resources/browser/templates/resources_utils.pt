@@ -6,7 +6,7 @@
  >
 
 <metal:row define-macro="filedownload" i18n:domain="sdswas.resources">
-    <h4 class="modwin-cta-comp-title" tal:content="title"/>
+    <h2 class="modwin-cta-comp-title" tal:content="title"/>
     <a class="outlined-cta"
         href="${context/absolute_url}/@@download/document/${view/w/document/filename}"
         target="_self">
