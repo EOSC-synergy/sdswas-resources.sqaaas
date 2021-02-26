@@ -13,11 +13,13 @@
 </head>
 
 <body>
-    <metal:main fill-slot="main">
+<metal:main fill-slot="main">
 
-            <!--Page title-->
-            <metal:macro use-macro="context/banner_title_macro/macros/master"
-                  tal:define="title string:Resources"/>
+      <!--Page title-->
+      <metal:macro use-macro="context/banner_title_macro/macros/master"
+            tal:define="title string:Resources"/>
+
+      <div class="main-wrap">
 
             <!--Resource breadcrum btn -->
             <!--This section has a bottom padding and the homonymous section in document_view does not-->
@@ -30,7 +32,10 @@
             </div><!-- Resource breadcrum btn ends -->
             </section>
 
-      <metal:macro use-macro="context/dissemination_modal/macros/main-content"/>
-     </metal:main>
+            <metal:macro use-macro="context/dissemination_modal/macros/main-content"/>
+
+      </div>
+
+</metal:main>
 </body>
 </html>

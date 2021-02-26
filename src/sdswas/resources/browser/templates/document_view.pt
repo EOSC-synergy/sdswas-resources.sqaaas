@@ -6,11 +6,13 @@
       xmlns:i18n="http://xml.zope.org/namespaces/i18n"
       i18n:domain="sdswas.resources">
 <body>
-    <metal:main fill-slot="main">
+<metal:main fill-slot="main">
 
-        <!--Page title-->
-        <metal:macro use-macro="context/banner_title_macro/macros/master"
-                tal:define="title string:Resources"/>
+    <!--Page title-->
+    <metal:macro use-macro="context/banner_title_macro/macros/master"
+            tal:define="title string:Resources"/>
+
+    <div class="main-wrap">
 
         <!--Resource breadcrum btn -->
         <!--This section does not have a bottom padding because it its followed by a title which do have top padding.
@@ -25,6 +27,9 @@
         </section>
 
         <metal:macro use-macro="context/document_modal/macros/main-content"/>
-   </metal:main>
+
+    </div>
+
+</metal:main>
 </body>
 </html>
