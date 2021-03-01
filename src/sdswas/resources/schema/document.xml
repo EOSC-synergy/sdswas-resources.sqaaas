@@ -5,14 +5,13 @@
       <description/>
       <title>File</title>
     </field>
-    <field name="type" type="zope.schema.Choice">
+    <field name="document_type" type="zope.schema.Choice">
       <default>Publication</default>
       <description/>
       <title>Type</title>
       <values>
         <element>Publication</element>
         <element>Technical report</element>
-        <element></element>
       </values>
     </field>
   </schema>

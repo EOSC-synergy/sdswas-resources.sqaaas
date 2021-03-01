@@ -23,7 +23,7 @@ class ResourceListView(DefaultView):
 
         for resource in resources:
             resObj = resource.getObject()
-            if resObj.type == document_type:
+            if resObj.document_type == document_type:
                 results.append({
                     'title': resObj.Title(),
                     'creation_date': resObj.created().strftime('%-d %B %Y'),
