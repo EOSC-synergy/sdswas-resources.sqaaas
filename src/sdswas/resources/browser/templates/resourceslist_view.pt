@@ -94,7 +94,7 @@
                         data-contents-url="${listbytype_viewname}"
                         data-value="disseminations">
                     <div class="btn-g">
-                      <p>Disseminations</p>
+                      <p>Dissemination</p>
                     </div>
                   </button>
                 </li>
@@ -142,7 +142,7 @@
                 <li class="filter-btn-container">
                     <button class="filter-btn-desktop btn" type="button"
                     data-contents-url="${listbytype_viewname}"
-                    data-value="disseminations">Disseminations</button>
+                    data-value="disseminations">Dissemination</button>
                 </li>
             </ul><!-- Resources filter menu on desktop ends -->
         </div>
