@@ -4,6 +4,7 @@
     var requirejsOptions = {
         baseUrl: '++theme++sdswas/',
         optimize: 'none',
+        urlArgs:  "bust=v1",
         paths: {
             'main': 'js/main'
         }
@@ -98,10 +99,9 @@
                     var url = $(trigger).attr("data-url");
                     /**Fetch the rest of the information: contents of the body */
                     $(".modwin-main-content").load(url, function(responseTxt, statusTxt, xhr) {
-                        if (statusTxt = "success") {
-                            EventPresentations.init();
-                        }
                         ModalWindow.open();
+                        EventPresentations.init();
+                        ImagesSlider.init();
                     });
                 },
 
