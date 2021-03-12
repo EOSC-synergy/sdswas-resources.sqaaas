@@ -10,7 +10,7 @@
         tal:define="items python:view.publication_resources();">
         <tal:row tal:repeat="item items">
                 <!-- Card -->
-                <div class="resources-card"
+                <div class="resources-card  card-with-embedded-doc"
                         tal:define="small_info python:item['creation_date'];
                                     url python:item['absolute_url']"
                         tal:attributes="data-gobacklink string:< BACK TO PUBLICATIONS;

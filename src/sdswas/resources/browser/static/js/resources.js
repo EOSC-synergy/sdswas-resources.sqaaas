@@ -4,7 +4,7 @@
     var requirejsOptions = {
         baseUrl: '++theme++sdswas/',
         optimize: 'none',
-        urlArgs:  "bust=v1",
+        urlArgs:  "bust=v2",
         paths: {
             'main': 'js/main'
         }
@@ -29,11 +29,12 @@
                     App.loader.init();
                     ModalWindow.init(); // Initialize if page has modal window.
                     this.filterMenu.init();
-                    this.cards.init();
                 },
 
                 cards: {
-                    selectors: $(".resources-card"),
+                    withEmbeddedDocs: $(".resources-card.card-with-embedded-doc"),
+                    withoutEmbeddedDocs: $(".resources-card:not(.card-with-embedded-doc)"),
+                    withTriggers: $(".js-card-trigger"),
                     triggers: $(".js-card-trigger"),
                     titles: $(".resources-card-title :first-child"),
                     titleLenght: 70,
@@ -64,19 +65,13 @@
 
                     addListeners: function() {
                         App.con("----)))) Resources >> Cards are listening");
-                        $(".resources-card").each(function() {
-
-                            $(this).on("click", ".js-card-trigger", function(event) {
-                                event.preventDefault();
-                                //this is the current trigger but we use the parent who set the event because it has the data to be used by its children
-                                Resources.populateModal(event.delegateTarget);
-                            });
-                        });
 
                         $(window).on("click", function() {
                             Header.hideSubmenus();
                             Resources.filterMenu.hideSubmenu();
                         });
+
+                        this.attachOpenItemView();
 
                         $(window).on("resize", function() {
                             App.winW = $(window).width();
@@ -84,10 +79,50 @@
                             Sidenav.repos();
                             Header.hideSubmenus();
                             Resources.filterMenu.hideSubmenu();
-
+                            Resources.cards.attachOpenItemView();
                         });
                     },
 
+                    attachOpenItemView: function(){
+                        //Attachs to the on click event of children elements with class "js-card-trigger"
+                        //the function that opens modal window. The click is unattached in screens < 592px
+                        //for cards whose modal window displays an embedded doc
+
+                        //For cards whose modal window DOES NOT DISPLAY an embedded doc, always attach the function
+                        $(".resources-card:not(.card-with-embedded-doc)").each(function () {
+                            $(this).off("click",".js-card-trigger").on("click",".js-card-trigger", function(event) {
+                                event.preventDefault();
+                                //this is the current trigger but we use the parent who set the event because it has the data to be used by its children
+                                Resources.populateModal(event.delegateTarget);
+                            });
+                        });
+
+                        //For cards whose modal window DISPLAYS an embedded doc, unattach the function if screen < 592px
+                        if (App.winW <= 592) {
+                            Resources.cards.patchCardsWithEmbeddedDocs();
+                        } else {
+                            Resources.cards.restoreCardsWithEmbededDocs();
+                        }
+                    },
+
+                    patchCardsWithEmbeddedDocs: function () {
+                        App.con("Patching cards with embedded docs");
+                        $(".card-with-embedded-doc").each(function () {
+                            $(this).find(".js-card-trigger").css("cursor", "default")
+                            $(this).off("click", ".js-card-trigger");
+                        });
+                    },
+                    restoreCardsWithEmbededDocs: function () {
+                        App.con("Restoring cards with embedded docs");
+                        $(".card-with-embedded-doc").each(function () {
+                            $(this).find(".js-card-trigger").css("cursor", "pointer")
+                            $(this).off("click",".js-card-trigger").on("click",".js-card-trigger", function(event) {
+                                event.preventDefault();
+                                //this is the current trigger but we use the parent who set the event because it has the data to be used by its children
+                                Resources.populateModal(event.delegateTarget);
+                            });
+                        });
+                    }
                 },
 
                 populateModal: function(trigger) {
