@@ -2,24 +2,26 @@
       lang="en"
       xmlns:tal="http://xml.zope.org/namespaces/tal"
       xmlns:metal="http://xml.zope.org/namespaces/metal"
-      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
- >
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n">
 
 <!-- Tech reports Cards container -->
-<div id="techreports" class="resources-cards-container main-container"
-        tal:define="items python:view.techreport_resources();">
-        <tal:row tal:repeat="item items">
-                <!-- Card -->
-                <div class="resources-card card-with-embedded-doc"
-                        tal:define="small_info python:item['creation_date'];
-                                    url python:item['absolute_url']"
-                        tal:attributes="data-gobacklink string:< BACK TO TECHNICAL REPORTS;
-                                        data-url string:${url}/document_modal;
-                                        data-title python:item['title']">
-                        <metal:macro use-macro="context/resources_utils/macros/resource_with_preview" />
-                   </div>
-                <!-- Cards container ends -->
-        </tal:row>
-</div>
-
+<tal tal:define="b_start python:0;
+                b_start request/b_start | b_start;
+                batch python: view.techreport_resources( b_size=12, b_start=b_start);">
+        <div id="techreports" class="resources-cards-container main-container">
+                <tal:row tal:repeat="item batch">
+                        <!-- Card -->
+                        <div class="resources-card card-with-embedded-doc"
+                                tal:define="small_info python:item['creation_date'];
+                                                url python:item['absolute_url']"
+                                tal:attributes="data-gobacklink string:< BACK TO TECHNICAL REPORTS;
+                                                data-url string:${url}/document_modal;
+                                                data-title python:item['title']">
+                                <metal:macro use-macro="context/resources_utils/macros/resource_with_preview" />
+                                </div>
+                        <!-- Cards container ends -->
+                </tal:row>
+        </div>
+        <div metal:use-macro="context/batch_macros/macros/navigation" />
+</tal>
 </html>

@@ -150,8 +150,7 @@
       <section class="resources-cards bg-color-white">
 
         <!-- Resources cards wrap -->
-        <div class="main-wrap main-padding">
-        </div>
+        <div class="resources-cards-wrap main-wrap main-padding"/>
         <!-- Resources cards carpet ends -->
 
         <!-- Loader overlay -->

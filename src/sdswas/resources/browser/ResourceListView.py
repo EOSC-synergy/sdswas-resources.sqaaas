@@ -1,18 +1,13 @@
-#from Products.Five.browser import BrowserView
+#from plone.batching.browser import BatchView
 from plone.dexterity.browser.view import DefaultView
+
 import datetime as dt
 from plone import api
 from plone.batching import Batch
 
 class ResourceListView(DefaultView):
 
-    def update(self):
-        ## Disable all portlets
-        super(DefaultView, self).update()
-        self.request.set('disable_plone.rightcolumn',1)
-        self.request.set('disable_plone.leftcolumn',1)
-
-    def document_resources(self, document_type):
+    def document_resources(self, document_type, b_size, b_start):
         ## Returns all documents
         results = []
         resources= self.context.portal_catalog({"portal_type":"document",
@@ -30,9 +25,11 @@ class ResourceListView(DefaultView):
                     'absolute_url': resObj.absolute_url(),
                     'downloadfile_url': resObj.absolute_url()+'/@@download/file/'
                     })
+        results = Batch(results, size=b_size, start=b_start, orphan=0)
+
         return results
 
-    def past_events(self, event_type):
+    def past_events(self, event_type, b_size, b_start):
         ## Returns instances of the type specified by the parameter "event_type" with a date older than today
         ## The parameter "event_type" wull be generic_event or webinar
         resources = api.content.find(
@@ -52,27 +49,30 @@ class ResourceListView(DefaultView):
                 'absolute_url': resObj.absolute_url(),
                 'start': resObj.start.strftime('%-d %B %Y')
                 })
+
+        results = Batch(results, size=b_size, start=b_start, orphan=0)
+
         return results
 
-    def webinar_resources(self):
+    def webinar_resources(self, b_size, b_start):
         ## Returns webinars with a date older than today
-        results = self.past_events("webinar")
+        results = self.past_events("webinar", b_size, b_start)
         return results
 
-    def generic_events(self):
+    def generic_events(self, b_size, b_start):
         ## Returns generic events with a date older than today
-        results = self.past_events("generic_event")
+        results = self.past_events("generic_event", b_size, b_start)
         return results
 
-    def techreport_resources(self):
+    def techreport_resources(self, b_size, b_start):
         ## Returns all documents with type field equal to 'Technical report'
-        return self.document_resources('Technical report')
+        return self.document_resources('Technical report', b_size, b_start)
 
-    def publication_resources(self):
+    def publication_resources(self, b_size, b_start):
         ## Returns all documents with type field equal to 'Publication'
-        return self.document_resources('Publication')
+        return self.document_resources('Publication', b_size, b_start)
 
-    def dissemination_resources(self):
+    def dissemination_resources(self, b_size, b_start):
         ## Returns all disseminations
         results = []
         resources = api.content.find(context=self.context,
@@ -87,6 +87,8 @@ class ResourceListView(DefaultView):
                 'creation_date': resObj.created().strftime('%-d %B %Y'),
                 'absolute_url': resObj.absolute_url()
                 })
+
+        results = Batch(results, size=b_size, start=b_start, orphan=0)
 
         return results
 
