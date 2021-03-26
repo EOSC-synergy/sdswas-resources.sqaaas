@@ -147,14 +147,14 @@
       </section><!-- Resources filter ends -->
 
       <!-- Resources cards -->
-      <section class="resources-cards bg-color-white">
+      <section class="resources-cards bg-color-white section-with-min-height">
 
         <!-- Resources cards wrap -->
         <div class="resources-cards-wrap main-wrap main-padding"/>
         <!-- Resources cards carpet ends -->
 
         <!-- Loader overlay -->
-          <metal:macro use-macro="context/resources_utils/macros/preloader"/>
+        <div tal:replace="structure context/loader"/>
         <!-- Loader overlay ends -->
 
       </section><!-- Resources cards carpet ends -->

@@ -53,30 +53,6 @@
   </a><!-- Resources card cta ends -->
 </metal:row>
 
-<metal:row define-macro="preloader" i18n:domain="sdswas.resources">
-
-  <!-- Loader overlay -->
-  <div class="loader-overlay">
-    <!-- Loader container -->
-    <div class="loader-container">
-
-      <div><p class="loader-title">Barcelona Dust Regional Center</p></div>
-
-      <div class="dots-container">
-        <div class="loader-dot"></div>
-        <div class="loader-dot"></div>
-        <div class="loader-dot"></div>
-        <div class="loader-dot"></div>
-        <div class="loader-dot"></div>
-        <div class="loader-dot"></div>
-        <div class="loader-dot"></div>
-      </div>
-    </div>
-    <!-- Loader container ends -->
-  </div>
-  <!-- Loader overlay ends -->
-</metal:row>
-
 <metal:row define-macro="breadcumb" i18n:domain="sdswas.resources">
 
   <!--Resource breadcrum btn -->
