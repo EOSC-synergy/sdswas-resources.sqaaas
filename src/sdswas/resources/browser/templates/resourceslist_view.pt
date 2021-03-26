@@ -153,9 +153,11 @@
         <div class="resources-cards-wrap main-wrap main-padding"/>
         <!-- Resources cards carpet ends -->
 
-        <!-- Loader overlay -->
-        <div tal:replace="structure context/loader"/>
-        <!-- Loader overlay ends -->
+        <!-- Loader widget -->
+        <div class="loader bg-color-white hide">
+          <div tal:replace="structure context/loader"/>
+        </div>
+        <!-- Loader widget ends -->
 
       </section><!-- Resources cards carpet ends -->
 
