@@ -1,6 +1,4 @@
-#from plone.batching.browser import BatchView
 from plone.dexterity.browser.view import DefaultView
-
 import datetime as dt
 from plone import api
 from plone.batching import Batch
@@ -26,7 +24,6 @@ class ResourceListView(DefaultView):
                     'downloadfile_url': resObj.absolute_url()+'/@@download/file/'
                     })
         results = Batch(results, size=b_size, start=b_start, orphan=0)
-
         return results
 
     def past_events(self, event_type, b_size, b_start):
@@ -70,7 +67,12 @@ class ResourceListView(DefaultView):
 
     def publication_resources(self, b_size, b_start):
         ## Returns all documents with type field equal to 'Publication'
-        return self.document_resources('Publication', b_size, b_start)
+        start = dt.datetime.now()
+        results = self.document_resources('Publication', b_size, b_start)
+        delta = dt.datetime.now()-start
+        log_time = "Resource publications list - Query execution time: "+str(delta.microseconds/1000)+"ms"
+        print(log_time)
+        return results
 
     def dissemination_resources(self, b_size, b_start):
         ## Returns all disseminations
