@@ -1,0 +1,5 @@
+src/sdswas/resources/__pycache__/*.pyc
+src/sdswas/resources/browser/__pycache__/*.pyc
+src/sdswas/resources/locales/__pycache__/*.pyc
+src/sdswas/resources/schema/__pycache__/*.pyc
+src/sdswas/resources/tests/__pycache__/*.pyc
