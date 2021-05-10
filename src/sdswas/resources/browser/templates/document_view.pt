@@ -12,7 +12,7 @@
     <metal:macro use-macro="context/banner_title_macro/macros/master"
             tal:define="title string:Resources"/>
 
-    <div class="main-wrap">
+    <div class="main-wrap main-padding-tb">
 
         <!--Resource breadcrum btn -->
         <!--This section does not have a bottom padding because it its followed by a title which do have top padding.
