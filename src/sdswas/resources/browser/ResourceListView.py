@@ -73,8 +73,7 @@ class ResourceListView(DefaultView):
         delta = dt.datetime.now()-start
         logging.getLogger("sdswas.resources.browser.ResourceListView").warning(
                        "Resource publications list - Query execution time: "+str(delta.microseconds/1000)+"ms")
-                        ## 'Ambiguous name for method of %s: %r != %r',
-                        ##classname, d['__name__'], name)
+
         return results
 
     def dissemination_resources(self, b_size, b_start):
