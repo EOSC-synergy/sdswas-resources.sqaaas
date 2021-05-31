@@ -2,7 +2,6 @@ from plone.dexterity.browser.view import DefaultView
 import datetime as dt
 from plone import api
 from plone.batching import Batch
-import logging
 
 class ResourceListView(DefaultView):
 
@@ -71,9 +70,6 @@ class ResourceListView(DefaultView):
         start = dt.datetime.now()
         results = self.document_resources('Publication', b_size, b_start)
         delta = dt.datetime.now()-start
-        logging.getLogger("sdswas.resources.browser.ResourceListView").warning(
-                       "Resource publications list - Query execution time: "+str(delta.microseconds/1000)+"ms")
-
         return results
 
     def dissemination_resources(self, b_size, b_start):
