@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<model xmlns="http://namespaces.plone.org/supermodel/schema" xmlns:easyform="http://namespaces.plone.org/supermodel/easyform" xmlns:form="http://namespaces.plone.org/supermodel/form" xmlns:i18n="http://xml.zope.org/namespaces/i18n" xmlns:lingua="http://namespaces.plone.org/supermodel/lingua" xmlns:marshal="http://namespaces.plone.org/supermodel/marshal" xmlns:security="http://namespaces.plone.org/supermodel/security" xmlns:users="http://namespaces.plone.org/supermodel/users">
-   <schema>
-      <field name="full_description" type="plone.app.textfield.RichText">
+<model xmlns="http://namespaces.plone.org/supermodel/schema"
+xmlns:easyform="http://namespaces.plone.org/supermodel/easyform"
+xmlns:form="http://namespaces.plone.org/supermodel/form"
+xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+xmlns:lingua="http://namespaces.plone.org/supermodel/lingua"
+xmlns:marshal="http://namespaces.plone.org/supermodel/marshal"
+xmlns:security="http://namespaces.plone.org/supermodel/security"
+xmlns:users="http://namespaces.plone.org/supermodel/users"
+xmlns:indexer="http://namespaces.plone.org/supermodel/indexer">
+   <schema based-on="plone.supermodel.model.Schema">
+      <field name="full_description" type="plone.app.textfield.RichText" indexer:searchable="true">
          <description>This is the text to be displayed in the full view of the content</description>
          <title>Full description</title>
       </field>
@@ -15,7 +23,7 @@
          <required>False</required>
          <title>Image</title>
       </field>
-      <field name="embedded_url" type="zope.schema.URI">
+      <field name="embedded_url" type="zope.schema.URI"  indexer:searchable="true">
          <description/>
          <required>False</required>
          <title>Embedded media URL</title>

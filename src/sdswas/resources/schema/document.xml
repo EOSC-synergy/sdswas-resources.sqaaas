@@ -1,11 +1,12 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<model xmlns:easyform="http://namespaces.plone.org/supermodel/easyform" xmlns:form="http://namespaces.plone.org/supermodel/form" xmlns:i18n="http://xml.zope.org/namespaces/i18n" xmlns:lingua="http://namespaces.plone.org/supermodel/lingua" xmlns:marshal="http://namespaces.plone.org/supermodel/marshal" xmlns:security="http://namespaces.plone.org/supermodel/security" xmlns:users="http://namespaces.plone.org/supermodel/users" xmlns="http://namespaces.plone.org/supermodel/schema">
-  <schema>
+<model xmlns:i18n="http://xml.zope.org/namespaces/i18n" xmlns:marshal="http://namespaces.plone.org/supermodel/marshal" xmlns:form="http://namespaces.plone.org/supermodel/form" xmlns:security="http://namespaces.plone.org/supermodel/security" xmlns:users="http://namespaces.plone.org/supermodel/users" xmlns:lingua="http://namespaces.plone.org/supermodel/lingua"
+xmlns="http://namespaces.plone.org/supermodel/schema"
+xmlns:indexer="http://namespaces.plone.org/supermodel/indexer">
+  <schema based-on="plone.supermodel.model.Schema">
     <field name="file" marshal:primary="true" type="plone.namedfile.field.NamedBlobFile">
       <description/>
       <title>File</title>
     </field>
-    <field name="document_type" type="zope.schema.Choice">
+    <field name="document_type" type="zope.schema.Choice" indexer:searchable="true">
       <default>Publication</default>
       <description/>
       <title>Type</title>
