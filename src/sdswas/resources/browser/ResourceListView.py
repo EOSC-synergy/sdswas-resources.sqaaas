@@ -34,8 +34,8 @@ class ResourceListView(DefaultView):
             review_state="published",
             end= {'query':dt.datetime.now(),
                   'range':'max'},
-            sort_on="start",
-            sort_order="descending")
+            "sort_on": ["start", "sortable_title"],
+            "sort_order": ["descending", "ascending"])
 
         results = []
         for resource in resources:
