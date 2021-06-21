@@ -29,14 +29,17 @@ class ResourceListView(DefaultView):
     def past_events(self, event_type, b_size, b_start):
         ## Returns instances of the type specified by the parameter "event_type" with a date older than today
         ## The parameter "event_type" wull be generic_event or webinar
-        resources = api.content.find(
-            portal_type=event_type,
-            review_state="published",
-            end= {'query':dt.datetime.now(),
-                  'range':'max'},
-            sort_on =  {"start", "sortable_title"},
-            sort_order = {"descending", "ascending"})
 
+        searchParams = {
+            "portal_type": [event_type],
+            "review_state": "published",
+            "end": {'query':dt.datetime.now(),
+                    'range':'max'},
+            "sort_on": ["start", "sortable_title"],
+            "sort_order": ["descending", "ascending"]
+        }
+
+        resources = self.context.portal_catalog(searchParams)
         results = []
         for resource in resources:
             resObj = resource.getObject()
