@@ -14,7 +14,7 @@
                         <div class="resources-card  card-with-embedded-doc"
                                 tal:define="small_info python:item['creation_date'];
                                         url python:item['absolute_url']"
-                                tal:attributes="data-gobacklink string:< BACK TO PUBLICATIONS;
+                                tal:attributes="data-breadcumb-text string:< BACK TO PUBLICATIONS;
                                                 data-url string:${url}/document_modal;
                                                 data-title python:item['title']">
 

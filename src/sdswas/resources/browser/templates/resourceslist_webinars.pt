@@ -14,7 +14,7 @@
                         <div class="resources-card"
                                 tal:define="small_info python:item['start'];
                                         url python:item['absolute_url']"
-                                tal:attributes="data-gobacklink  string:< BACK TO WEBINARS;
+                                tal:attributes="data-breadcumb-text string:< BACK TO WEBINARS;
                                                 data-url string:${url}/webinar_modal;
                                                 data-title python:item['title']">
                                 <metal:macro use-macro="context/resources_utils/macros/resource_without_preview" />
