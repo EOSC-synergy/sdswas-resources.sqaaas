@@ -8,3 +8,5 @@ class DocumentView(DefaultView):
         self.request.set('disable_plone.rightcolumn',1)
         self.request.set('disable_plone.leftcolumn',1)
 
+   def view_title(self):
+     return self.context.document_type

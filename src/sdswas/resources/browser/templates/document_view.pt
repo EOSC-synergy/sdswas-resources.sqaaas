@@ -5,14 +5,22 @@
       xmlns:metal="http://xml.zope.org/namespaces/metal"
       xmlns:i18n="http://xml.zope.org/namespaces/i18n"
       i18n:domain="sdswas.resources">
+
+<head>
+<metal:javascriptslot fill-slot="javascript_head_slot">
+  <script type="text/javascript" tal:define="navroot context/@@plone_portal_state/navigation_root_url"
+            tal:attributes="src string:${navroot}/++resource++sdswas.resources/js/document.js?1624375391492"/>
+</metal:javascriptslot>
+</head>
+
 <body>
 <metal:main fill-slot="main">
 
     <!--Page title-->
     <metal:macro use-macro="context/banner_title_macro/macros/master"
-            tal:define="title string:Resources"/>
+            tal:define="title view/view_title"/>
 
-    <div class="main-wrap main-padding-tb">
+    <div class="main-wrap">
 
         <!--Resource breadcrum btn -->
         <!--This section does not have a bottom padding because it its followed by a title which do have top padding.

@@ -8,7 +8,7 @@
 <head>
 <metal:javascriptslot fill-slot="javascript_head_slot">
   <script type="text/javascript" tal:define="navroot context/@@plone_portal_state/navigation_root_url"
-            tal:attributes="src string:${navroot}/++resource++sdswas.resources/js/dissemination.js"/>
+            tal:attributes="src string:${navroot}/++resource++sdswas.resources/js/dissemination.js?1624375391492"/>
 </metal:javascriptslot>
 </head>
 
@@ -17,7 +17,7 @@
 
       <!--Page title-->
       <metal:macro use-macro="context/banner_title_macro/macros/master"
-            tal:define="title string:Resources"/>
+            tal:define="title string:Dissemination"/>
 
       <div class="main-wrap">
 

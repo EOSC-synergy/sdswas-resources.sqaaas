@@ -23,9 +23,6 @@
 
             Header.highlightMenuButton("#resources-btn");
 
-            $(document).ready(function() {
-                ContentPage.ctaComponent.init();
-            });
         })(jQuery);
     });
 }());
