@@ -28,5 +28,10 @@ xmlns:indexer="http://namespaces.plone.org/supermodel/indexer">
          <required>False</required>
          <title>Embedded media URL</title>
       </field>
+      <field name="year" type="zope.schema.Date" indexer:searchable="true">
+         <description>Only the year of the date will be used. It will be displayed in the card and used as the first sorting criteria of the Resources grid</description>
+         <required>False</required>
+         <title>Year</title>
+      </field>
    </schema>
 </model>
