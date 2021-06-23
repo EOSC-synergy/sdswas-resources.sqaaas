@@ -12,7 +12,7 @@
                 <tal:row tal:repeat="item batch">
                         <!-- Card -->
                         <div class="resources-card  card-with-embedded-doc"
-                                tal:define="small_info python:item['creation_date'];
+                                tal:define="small_info python:item['year'];
                                         url python:item['absolute_url']"
                                 tal:attributes="data-breadcumb-text string:< BACK TO PUBLICATIONS;
                                                 data-url string:${url}/document_modal;

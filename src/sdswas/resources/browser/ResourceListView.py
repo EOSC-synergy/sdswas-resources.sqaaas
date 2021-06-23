@@ -17,11 +17,18 @@ class ResourceListView(DefaultView):
         for resource in resources:
             resObj = resource.getObject()
             if resObj.document_type == document_type:
+                year = resObj.year
+                if year:
+                    year = year.strftime('%Y')
+                    author = resObj.author
+                    if author: year = author + ", " + year
+
                 results.append({
                     'title': resObj.Title(),
                     'creation_date': resObj.created().strftime('%-d %B %Y'),
                     'absolute_url': resObj.absolute_url(),
-                    'downloadfile_url': resObj.absolute_url()+'/@@download/file/'
+                    'downloadfile_url': resObj.absolute_url()+'/@@download/file/',
+                    'year': year
                     })
         results = Batch(results, size=b_size, start=b_start, orphan=0)
         return results
