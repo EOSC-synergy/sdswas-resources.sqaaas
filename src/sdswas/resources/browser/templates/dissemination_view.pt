@@ -32,7 +32,10 @@
             </div><!-- Resource breadcrum btn ends -->
             </section>
 
-            <metal:macro use-macro="context/dissemination_modal/macros/main-content"/>
+            <!-- Modal window main content -->
+            <div class="modwin-dynamic-content">
+                  <metal:macro use-macro="context/dissemination_modal/macros/main-content"/>
+            </div>  <!-- Modal window main content ends -->
 
       </div>
 

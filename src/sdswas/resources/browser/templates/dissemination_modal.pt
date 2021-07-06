@@ -9,7 +9,6 @@
             tal:define = "image context/image;
                           embedded_url context/embedded_url;">
 
-  <div class="modwin-main-content bg-color-white">
 
     <!-- Modal window title -->
     <div tal:replace="structure context/modwin_page_title"/>
@@ -77,6 +76,5 @@
       </div>
     </section>
     <!-- Modal window sidepanel section ends -->
-  </div>
 </metal:row>
 </html>
