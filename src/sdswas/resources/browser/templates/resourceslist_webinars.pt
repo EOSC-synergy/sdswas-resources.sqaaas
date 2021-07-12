@@ -12,12 +12,12 @@
                 <tal:row tal:repeat="item batch">
                         <!-- Card -->
                         <div class="resources-card"
-                                tal:define="small_info python:item['start'];
-                                            url python:item['absolute_url'];
-                                            presented_by python:item['presented_by']"
+                                tal:define="small_info item/start;
+                                            url item/absolute_url;
+                                            presented_by item/presented_by"
                                 tal:attributes="data-breadcumb-text string:< BACK TO WEBINARS;
                                                 data-url string:${url}/webinar_modal;
-                                                data-title python:item['title']">
+                                                data-title item/title">
                                 <metal:macro use-macro="context/resources_utils/macros/resource_without_preview" />
                         </div>
                         <!-- Cards container ends -->
