@@ -50,11 +50,17 @@ class ResourceListView(DefaultView):
         results = []
         for resource in resources:
             resObj = resource.getObject()
+
+            ##The field 'presented_by' in generic events does not contain the speaker but the organiser. Thus, do not include it in the card
+            ##The field has to be added to all the entries of the results set
+            presented_by = resObj.presented_by if event_type == "webinar" else None
+
             results.append({
                 'title': resObj.Title(),
                 'creation_date': resObj.created().strftime('%-d %B %Y'),
                 'absolute_url': resObj.absolute_url(),
-                'start': resObj.start.strftime('%-d %B %Y')
+                'start': resObj.start.strftime('%-d %B %Y'),
+                'presented_by': presented_by
                 })
 
         results = Batch(results, size=b_size, start=b_start, orphan=0)

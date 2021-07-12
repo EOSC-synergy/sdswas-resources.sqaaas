@@ -13,7 +13,8 @@
                         <!-- Card -->
                         <div class="resources-card"
                                 tal:define="small_info python:item['start'];
-                                        url python:item['absolute_url']"
+                                            url python:item['absolute_url'];
+                                            presented_by python:item['presented_by']"
                                 tal:attributes="data-breadcumb-text string:< BACK TO WEBINARS;
                                                 data-url string:${url}/webinar_modal;
                                                 data-title python:item['title']">

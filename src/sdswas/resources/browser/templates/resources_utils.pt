@@ -41,6 +41,7 @@
 
     <a class="resources-card-title js-card-trigger"><h3 tal:content="python:item['title']"/></a>
     <div class="resources-card-small-info"><p tal:content="small_info"></p></div>
+    <div class="resources-card-small-info"><p tal:content="presented_by"></p></div>
 
  </div><!-- Card content ends -->
 
