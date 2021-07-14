@@ -6,31 +6,30 @@ from plone.batching import Batch
 class ResourceListView(DefaultView):
 
     def document_resources(self, document_type, b_size, b_start):
-        ## Returns all documents
+        ## Returns all published documents sorted by year descending and author ascending
+
+        searchParams = {
+            "portal_type": "document",
+            "review_state":"published",
+            "sort_on":["year","author"],
+            "sort_order":["descending", "ascending"],
+        }
+
+        resources= self.context.portal_catalog(searchParams)
         results = []
-        resources= self.context.portal_catalog({"portal_type":"document",
-                                     "sort_on":'created',
-                                     "sort_order":"descending",
-                                     "review_state":"published"})
-
-
         for resource in resources:
             resObj = resource.getObject()
             if resObj.document_type == document_type:
-                year = resObj.year
-                if year:
-                    year = year.strftime('%Y')
-                    author = resObj.author
-                    if author: year = author + ", " + year
-
                 results.append({
                     'title': resObj.Title(),
                     'creation_date': resObj.created().strftime('%-d %B %Y'),
                     'absolute_url': resObj.absolute_url(),
                     'downloadfile_url': resObj.absolute_url()+'/@@download/file/',
-                    'year': year
+                    'year': resObj.author + ", " + resObj.year
                     })
+
         results = Batch(results, size=b_size, start=b_start, orphan=0)
+
         return results
 
     def past_events(self, event_type, b_size, b_start):
@@ -83,28 +82,28 @@ class ResourceListView(DefaultView):
 
     def publication_resources(self, b_size, b_start):
         ## Returns all documents with type field equal to 'Publication'
-        start = dt.datetime.now()
         results = self.document_resources('Publication', b_size, b_start)
-        delta = dt.datetime.now()-start
         return results
 
     def dissemination_resources(self, b_size, b_start):
-        ## Returns all disseminations
+        ## Returns all published dissemination sorted by year descending and author ascending
+
+        searchParams = {
+            "portal_type": "dissemination",
+            "review_state": "published",
+            "sort_on":["year","sortable_title"],
+            "sort_order":["descending", "ascending"],
+        }
+
+        resources = self.context.portal_catalog(searchParams)
         results = []
-        resources = api.content.find(context=self.context,
-            portal_type='dissemination',
-            review_state="published",
-            sort_on="created",
-            sort_order="descending")
         for resource in resources:
             resObj = resource.getObject()
-            year = resObj.year
-            if year: year = year.strftime('%Y')
             results.append({
                 'title': resObj.Title(),
                 'creation_date': resObj.created().strftime('%-d %B %Y'),
                 'absolute_url': resObj.absolute_url(),
-                'year': year
+                'year': resObj.year
                 })
 
         results = Batch(results, size=b_size, start=b_start, orphan=0)

@@ -15,14 +15,14 @@ xmlns:indexer="http://namespaces.plone.org/supermodel/indexer">
         <element>Technical report</element>
       </values>
     </field>
-    <field name="year" type="zope.schema.Date" indexer:searchable="true">
-      <description>Only the year of the date will be used. It will be displayed in the card and used as the first sorting criteria of the Resources grid</description>
-      <required>False</required>
+    <field name="year" type="zope.schema.TextLine" indexer:searchable="true">
+      <description/>
+      <required>True</required>
       <title>Year</title>
     </field>
     <field name="author" type="zope.schema.TextLine" indexer:searchable="true">
       <description/>
-      <required>False</required>
+      <required>True</required>
       <title>Author</title>
     </field>
   </schema>
