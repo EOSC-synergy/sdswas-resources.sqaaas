@@ -15,7 +15,7 @@
                                 tal:define="small_info python:item['year'];
                                         url python:item['absolute_url'];
                                         presented_by python:None"
-                                tal:attributes="data-breadcumb-text string:< BACK TO DISSEMINATIONS;
+                                tal:attributes="data-breadcumb-text string:< BACK TO DISSEMINATION;
                                                 data-url string:${url}/dissemination_modal;
                                                 data-title python:item['title']">
 
